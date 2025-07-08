@@ -1,0 +1,441 @@
+/* style.css */
+
+/* --- 全局样式 --- */
+body {
+    font-family: 'Roboto', 'Noto Sans SC', sans-serif; /* 优先英文字体，中文用 Noto Sans SC */
+    line-height: 1.7; /* 稍微增加行高，提升阅读舒适度 */
+    margin: 0;
+    padding: 0; /* 移除 body 默认 padding，由 container 负责 */
+    background-color: #f0f2f5; /* 更现代的浅灰色背景 */
+    color: #333;
+    display: flex; /* 使用 Flexbox 布局，让 footer 固定在底部 */
+    flex-direction: column;
+    min-height: 100vh; /* 确保 body 至少占据视口高度 */
+}
+
+.container {
+    max-width: 1000px; /* 稍微增加最大宽度 */
+    width: 95%; /* 确保在小屏幕上有适当的边距 */
+    margin: 30px auto; /* 增加上下外边距 */
+    padding: 40px; /* 增加内边距 */
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* 更明显的阴影效果 */
+    flex-grow: 1; /* 让容器在 Flexbox 中占据剩余空间 */
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 38px; /* 稍微增大标题字体 */
+    letter-spacing: 1px; /* 增加字母间距 */
+    border-bottom: 2px solid #eee; /* 标题下划线 */
+    padding-bottom: 15px;
+}
+
+/* --- 通知公告框样式 --- */
+.announcement {
+    background-color: #e6f7ff; /* 浅蓝色背景 */
+    border: 1px solid #91d5ff; /* 蓝色边框 */
+    border-left: 5px solid #1890ff; /* 左侧粗边框 */
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.announcement strong {
+    color: #1890ff;
+}
+
+
+/* --- 资源分类样式 --- */
+.resource-category {
+    margin-bottom: 50px; /* 每个分类块之间的间距 */
+    padding: 25px; /* 增加分类块内边距 */
+    background-color: #fdfdfd; /* 分类块的背景色 */
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05); /* 分类块的轻微阴影 */
+    position: relative; /* 用于 category-title 定位 */
+}
+
+.category-title {
+    position: absolute; /* 绝对定位到左上角 */
+    top: -15px; /* 突出显示 */
+    left: 20px;
+    background-color: #5cb85c; /* 绿色背景 */
+    color: white;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 20px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2; /* 确保标题在表格上方 */
+}
+
+
+/* --- 表格样式 --- */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    margin-top: 15px; /* 调整表格与分类标题的距离 */
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 900px; /* 调整最小宽度，适应新的列数 */
+}
+
+table th, table td {
+    padding: 15px 18px;
+    text-align: left;
+    white-space: nowrap;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+}
+
+table th:nth-child(2), /* 描述列的表头 */
+table td:nth-child(2) { /* 描述列的单元格 */
+    width: 30%; /* 给描述列分配更多宽度 */
+    white-space: normal; /* 允许描述内容换行 */
+}
+
+table td:nth-child(3), /* 分享链接 1 */
+table td:nth-child(4), /* 分享链接 2 */
+table td:nth-child(5) { /* 分享链接 3 */
+    width: 15%; /* 给链接列分配宽度 */
+}
+
+table th {
+    background-color: #e9ecef; /* 浅灰色表头背景 */
+    color: #555;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* 表格的第一个和最后一个单元格的圆角 */
+table thead th:first-child {
+    border-top-left-radius: 8px;
+}
+table thead th:last-child {
+    border-top-right-radius: 8px;
+    border-right: none;
+}
+table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+}
+table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+    border-right: none;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #fefefe;
+}
+
+table tbody tr:hover {
+    background-color: #eaf6ff; /* 鼠标悬停效果，更柔和的蓝色 */
+    cursor: pointer;
+}
+
+table td:last-child {
+    border-right: none;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* --- 更新时间样式 --- */
+.update-time {
+    font-size: 0.9em; /* 字体稍微小一点 */
+    color: #888; /* 颜色更浅一些 */
+    font-style: italic; /* 斜体 */
+}
+
+/* --- 可折叠描述样式 --- */
+.resource-description {
+    border: none; /* 移除 details 默认边框 */
+    margin: 0;
+    padding: 0;
+}
+
+.resource-description summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: #007bff; /* 链接颜色 */
+    list-style: none; /* 移除默认箭头 */
+    position: relative; /* 用于自定义箭头 */
+    padding-left: 20px; /* 为自定义箭头留出空间 */
+}
+
+.resource-description summary::before {
+    content: '▶'; /* 未展开时的箭头 */
+    position: absolute;
+    left: 0;
+    color: #007bff;
+    transition: transform 0.2s ease-in-out;
+}
+
+.resource-description[open] summary::before {
+    content: '▼'; /* 展开时的箭头 */
+    transform: rotate(90deg); /* 旋转箭头 */
+}
+
+.resource-description p {
+    margin-top: 10px; /* 描述内容与 summary 间的间距 */
+    padding-left: 20px; /* 与箭头对齐 */
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* --- 链接样式 --- */
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* --- 页脚样式 --- */
+.footer {
+    background-color: #2c3e50; /* 深色背景 */
+    color: #ecf0f1; /* 浅色文字 */
+    padding: 40px 20px;
+    margin-top: 50px; /* 与容器的间距 */
+    font-size: 15px;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 居中对齐链接按钮 */
+    gap: 30px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px; /* 移除 min-width 让其更灵活 */
+    text-align: center; /* 标题居中 */
+}
+
+.footer-section h3 {
+    color: #1abc9c;
+    margin-bottom: 25px; /* 增加标题和按钮的间距 */
+    font-size: 18px;
+    position: relative;
+    padding-bottom: 8px;
+    display: inline-block; /* 使得下划线只作用于标题文字 */
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 50%; /* 居中下划线 */
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #1abc9c;
+}
+
+/* 页脚按钮样式 */
+.footer-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* 按钮之间的间距 */
+}
+
+.footer-button {
+    background-color: #1abc9c; /* 强调色背景 */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block; /* 确保按钮可以设置宽度和间距 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.footer-button:hover {
+    background-color: #16a085; /* 鼠标悬停时颜色变深 */
+    text-decoration: none; /* 移除下划线 */
+    transform: translateY(-2px); /* 向上轻微浮动 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+}
+.footer-bottom p {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+
+/* --- 媒体查询 (响应式调整) --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+        margin: 20px auto;
+    }
+
+    h1 {
+        font-size: 32px;
+        margin-bottom: 25px;
+    }
+
+    .announcement {
+        padding: 12px 15px;
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+
+    .resource-category {
+        padding: 20px;
+        margin-bottom: 40px;
+    }
+
+    .category-title {
+        font-size: 18px;
+        padding: 7px 15px;
+        top: -12px;
+        left: 15px;
+    }
+
+    table th, table td {
+        padding: 12px 15px;
+        font-size: 13px;
+    }
+
+    table {
+        min-width: 750px; /* 适当调小最小宽度，但仍需横向滚动 */
+    }
+
+    /* 针对小屏幕优化描述列，可以适当减小宽度，但保持可折叠特性 */
+    table th:nth-child(2),
+    table td:nth-child(2) {
+        width: 25%;
+    }
+
+    .footer-content {
+        flex-direction: column; /* 小屏幕上列堆叠显示 */
+        gap: 20px;
+    }
+    .footer-section {
+        min-width: unset; /* 移除最小宽度限制 */
+    }
+
+    .footer-buttons {
+        flex-direction: column; /* 按钮在小屏幕上垂直堆叠 */
+        align-items: center; /* 按钮居中 */
+    }
+    .footer-button {
+        width: 80%; /* 按钮占据更多宽度 */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0;
+    }
+    .container {
+        padding: 15px;
+        margin: 15px auto;
+        border-radius: 8px;
+    }
+    h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    .announcement {
+        font-size: 13px;
+    }
+    .resource-category {
+        padding: 15px;
+        margin-bottom: 30px;
+    }
+    .category-title {
+        font-size: 16px;
+        padding: 6px 12px;
+        top: -10px;
+        left: 10px;
+    }
+    table {
+        min-width: 650px; /* 进一步调小最小宽度 */
+    }
+    table th:nth-child(2),
+    table td:nth-child(2) {
+        width: 20%; /* 在非常小的屏幕上再次调整描述列宽 */
+    }
+    .footer {
+        padding: 30px 15px;
+    }
+    .footer-section h3 {
+        font-size: 16px;
+    }
+    .footer-bottom {
+        margin-top: 30px;
+    }
+    .footer-button {
+        width: 90%; /* 按钮占据更多宽度 */
+    }
+}
+
+/* style.css */
+
+/* ... (省略了之前未更改的样式，请保留它们) ... */
+
+/* --- 新增的折叠功能样式 --- */
+.hidden-tr {
+    /* 初始状态下隐藏，JavaScript 会控制显示 */
+    display: none;
+}
+
+.toggle-more-btn {
+    display: block; /* 确保按钮独占一行 */
+    width: fit-content; /* 宽度适应内容 */
+    margin: 20px auto 0 auto; /* 居中显示，顶部留白 */
+    padding: 10px 25px;
+    background-color: #007bff; /* 蓝色按钮背景 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-more-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+.toggle-more-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* ... (省略了之前未更改的媒体查询样式) ... */
